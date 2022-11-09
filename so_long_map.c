@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:46:06 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/08 20:08:59 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/09 22:02:59 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	map_check_rect(char **map)
 	int	i;
 	int	len_compare;
 	int	len;
-	
+
 	len_compare = ft_strlen(map[0]);
 	i = 1;
 	while (map[i])
@@ -66,7 +66,7 @@ void	map_check_walls(char **map)
 	while (map[0][i + 1])
 	{
 		if ((map[0][i] != '1') || (map[height][i] != '1'))
-			return(ft_error('w'));
+			return (ft_error('w'));
 		i++;
 	}
 	while (map[j])
@@ -87,19 +87,21 @@ void	map_check_minsize(char **map)
 		return (ft_error('s'));
 }
 
-void	map_check_layout(char **map)
+//toggle = 0 for checking for 1 player 1 exit 1+ collect
+//toggle = 1 for checking for unreachable exit + collect
+void	map_check_layout(char **map, int toggle)
 {
 	int	player;
-	int collect;
+	int	collect;
 	int	exit;
 
 	player = 0;
 	collect = 0;
 	exit = 0;
-	map_increase_counter(map, player, collect, exit);
+	map_increase_counter(map, player, collect, exit, toggle);
 }
 
-void	map_increase_counter(char **map, int player, int collect, int exit)
+void	map_increase_counter(char **map, int player, int collect, int exit, int toggle)
 {
 	int	i;
 	int	j;
@@ -121,10 +123,13 @@ void	map_increase_counter(char **map, int player, int collect, int exit)
 		}
 		j++;
 	}
-	map_exit(player, collect, exit);
+	if (toggle == 0)
+		map_exit_setup(player, collect, exit);
+	if (toggle == 1)
+		map_exit_unreachable(player, collect, exit);
 }
 
-void	map_exit(int player, int collect, int exit)
+void	map_exit_setup(int player, int collect, int exit)
 {
 	if (player != 1)
 		return (ft_error('p'));
@@ -132,4 +137,13 @@ void	map_exit(int player, int collect, int exit)
 		return (ft_error('e'));
 	if (collect < 0)
 		return (ft_error('c'));
+}
+
+void	map_exit_unreachable(int player, int collect, int exit)
+{
+	if (exit == 1)
+		return (ft_error('u'));
+	if (collect > 0)
+		return (ft_error('U'));
+	player = 0;
 }
