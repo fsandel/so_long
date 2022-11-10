@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 17:10:01 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/08 18:32:22 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/10 10:26:00 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,60 @@ int	ft_array_height(char **array)
 	while (array[i])
 		i++;
 	return (i);
+}
+
+int	ft_array_count_chr(char **array, char c)
+{
+	int	i;
+	int	j;
+	int	counter;
+
+	j = -1;
+	counter = 0;
+	while (array[++j])
+	{
+		i = 0;
+		while (array[j][i])
+			if (array[j][i++] == c)
+				counter ++;
+	}
+	return (counter);
+}
+
+void	ft_putarray_fd(char **array, int fd)
+{
+	int	j;
+
+	j = 0;
+	while (array[j])
+	{
+		ft_putendl_fd(array[j], fd);
+		j++;
+	}
+}
+
+int	*ft_find_char_in_array(char **array, char c)
+{
+	int	i;
+	int	j;
+	int	*output;
+
+	output = (int *)ft_calloc(2 + 1, sizeof(int));
+	j = 0;
+	while (array[j])
+	{
+		i = 0;
+		while (array[j][i])
+		{
+			if (array[j][i] == c)
+			{
+				output[0] = i;
+				output[1] = j;
+				return (output);
+			}
+			i++;
+		}
+		j++;
+	}
+	return (NULL);
 }
