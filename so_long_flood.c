@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 20:19:43 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/10 10:25:23 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/11 14:40:33 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,3 +87,4 @@ void	flood_exit(char **map)
 	if (collect > 0)
 		return (ft_error_free('U', map));
 }
+

@@ -6,7 +6,7 @@
 #    By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 09:53:10 by fsandel           #+#    #+#              #
-#    Updated: 2022/11/10 18:26:10 by fsandel          ###   ########.fr        #
+#    Updated: 2022/11/11 15:33:24 by fsandel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@
 
 CC				= cc
 RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror
+CFLAGS			= #-Wall -Wextra -Werror
 NAME			= so_long.out
 OBJ_DIR			= ./obj/
 LIBFT_DIR		= ./libft/
