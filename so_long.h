@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:06:48 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/11 15:22:34 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/14 17:02:54 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@
 # include "lib/MLX42/include/MLX42/MLX42.h"
 # include "libft/libft.h"
 # include "textures.h"
+# include "settings.h"
 
 # define WIDTH 256
 # define HEIGHT 256
+
 
 typedef struct tex
 {
@@ -43,6 +45,18 @@ typedef struct img
 	mlx_image_t	*coin;
 	mlx_image_t	*exit;
 }	img_t;
+
+typedef struct player
+{
+	mlx_t			*mlx;
+	mlx_image_t		*img;
+	mlx_texture_t	*texture;
+	int				x;
+	int				y;
+	char			**map;
+	char			field;
+	int				collect;
+}	player_t;
 
 char	*ft_strjoin_free(char *first, char *second);
 int		ft_array_height(char **array);
