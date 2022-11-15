@@ -6,12 +6,12 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:31:12 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/14 16:42:08 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/15 14:42:17 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SETTINGS_H
 # define SETTINGS_H
 
-# define SPEED 4
+# define SPEED 10
 #endif

@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 17:30:54 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/11 10:13:52 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/15 15:07:49 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,16 @@ void	ft_error(char c)
 	if (c == 'N')
 		ft_error_exit("no map with this name found");
 	if (c == 'c')
-		ft_error_exit("wrong amount of arguments");
+		ft_error_exit("wrong amount of arguments, 1 argument");
 	if (c == 'e')
-		ft_error_exit("ypu pressed escape");
+		ft_error_exit("You hit the escape key");
 	else
 		ft_error_exit("random exit");
 }
 
 static void	ft_error_exit(char *str)
 {
+	write(2, "Error\n", 6);
 	write(2, str, ft_strlen(str));
 	exit(0);
 }

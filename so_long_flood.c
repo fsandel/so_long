@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 20:19:43 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/11 14:40:33 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/15 15:22:28 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	flood(char **map)
 	free(p);
 	map = flood_algorithm(map, p_x, p_y);
 	flood_exit(map);
-	free(map);
 }
 
 char	**flood_algorithm(char **map, int x, int y)

@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:06:48 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/14 17:02:54 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/15 10:46:23 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,20 @@ typedef struct img
 	mlx_image_t	*exit;
 }	img_t;
 
+typedef struct num
+{
+	mlx_image_t	*n0;
+	mlx_image_t	*n1;
+	mlx_image_t	*n2;
+	mlx_image_t	*n3;
+	mlx_image_t	*n4;
+	mlx_image_t	*n5;
+	mlx_image_t	*n6;
+	mlx_image_t	*n7;
+	mlx_image_t	*n8;
+	mlx_image_t	*n9;
+}	num_t;
+
 typedef struct player
 {
 	mlx_t			*mlx;
@@ -56,6 +70,9 @@ typedef struct player
 	char			**map;
 	char			field;
 	int				collect;
+	int				dis;
+	int				dis_m;
+	num_t			*num;
 }	player_t;
 
 char	*ft_strjoin_free(char *first, char *second);
