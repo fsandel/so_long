@@ -6,7 +6,7 @@
 #    By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 09:53:10 by fsandel           #+#    #+#              #
-#    Updated: 2022/11/15 15:33:29 by fsandel          ###   ########.fr        #
+#    Updated: 2022/11/16 19:44:18 by fsandel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,13 @@ HEADERS			=  -I ./include -I $(LIBMLX)/include
 LIBMLX			=./MLX42
 
 
-SRC				= so_long.c so_long_utils.c so_long_map.c so_long_error.c so_long_flood.c
+SRC				=	so_long.c so_long_backgound.c so_long_check.c \
+					so_long_error.c so_long_flood.c so_long_loop.c \
+					so_long_map.c so_long_map_1.c so_long_move.c \
+					so_long_pickup.c so_long_player.c so_long_steps.c \
+					so_long_utils.c so_long_enemy.c
+
+HDR			=	settings.h so_long_structs.h so_long.h textures.h
 
 $(OBJ_DIR)%.o:	%.c
 				@mkdir -p $(OBJ_DIR)

@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 17:30:54 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/15 15:07:49 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/16 17:34:47 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	ft_error(char c)
 		ft_error_exit("wrong amount of arguments, 1 argument");
 	if (c == 'e')
 		ft_error_exit("You hit the escape key");
+	if (c == 'X')
+		ft_error_exit("You closed the window");
 	else
 		ft_error_exit("random exit");
 }
@@ -58,19 +60,13 @@ static void	ft_error_exit(char *str)
 	exit(0);
 }
 
-void	map_check_name(char *name)
+void	ft_error_void(void *param)
 {
-	char	*ptr;
+	char	*str;
 
-	ptr = ft_strrchr(name, '.');
-	if (!ptr)
-		return (ft_error('n'));
-	if (ft_strncmp(ptr, ".ber", 5))
-		return (ft_error('n'));
-}
-
-void	check_arg_count(int argc)
-{
-	if (argc != 2)
-		return (ft_error('c'));
+	str = (char *)param;
+	if (str[0] == 'X')
+		ft_error_exit("You closed the window");
+	else
+		ft_error_exit("random exit");
 }

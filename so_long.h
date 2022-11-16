@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:06:48 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/15 10:46:23 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/16 20:04:17 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,82 +21,62 @@
 # include "libft/libft.h"
 # include "textures.h"
 # include "settings.h"
+# include "so_long_structs.h"
 
 # define WIDTH 256
 # define HEIGHT 256
 
+char		*ft_strjoin_free(char *first, char *second);
+int			ft_array_height(char **array);
+int			ft_array_count_chr(char **array, char c);
+void		ft_putarray_fd(char **array, int fd);
+int			*ft_find_char_in_array(char **array, char c);
 
-typedef struct tex
-{
-	mlx_texture_t	*player;
-	mlx_texture_t	*floor;
-	mlx_texture_t	*wall;
-	mlx_texture_t	*spawn;
-	mlx_texture_t	*coin;
-	mlx_texture_t	*exit;
-}	tex_t;
+char		**map_load(char *path);
+void		map_check_rect(char **map);
+void		map_check_walls(char **map);
+void		map_check_minsize(char **map);
+void		map_check_layout(char **map);
 
-typedef struct img
-{
-	mlx_image_t	*player;
-	mlx_image_t	*floor;
-	mlx_image_t	*wall;
-	mlx_image_t	*spawn;
-	mlx_image_t	*coin;
-	mlx_image_t	*exit;
-}	img_t;
+void		flood(char **map);
+char		**flood_algorithm(char **map, int x, int y);
+char		**flood_increase(char **map, int x, int y, char *str);
+void		flood_exit(char **map);
 
-typedef struct num
-{
-	mlx_image_t	*n0;
-	mlx_image_t	*n1;
-	mlx_image_t	*n2;
-	mlx_image_t	*n3;
-	mlx_image_t	*n4;
-	mlx_image_t	*n5;
-	mlx_image_t	*n6;
-	mlx_image_t	*n7;
-	mlx_image_t	*n8;
-	mlx_image_t	*n9;
-}	num_t;
+void		ft_error_free(char c, char **map);
+void		ft_error(char c);
+void		ft_error_void(void *param);
 
-typedef struct player
-{
-	mlx_t			*mlx;
-	mlx_image_t		*img;
-	mlx_texture_t	*texture;
-	int				x;
-	int				y;
-	char			**map;
-	char			field;
-	int				collect;
-	int				dis;
-	int				dis_m;
-	num_t			*num;
-}	player_t;
+void		map_check_name(char *name);
+void		check_arg_count(int argc);
+void		map_check(char *argv);
 
-char	*ft_strjoin_free(char *first, char *second);
-int		ft_array_height(char **array);
-int		ft_array_count_chr(char **array, char c);
-void	ft_putarray_fd(char **array, int fd);
-int		*ft_find_char_in_array(char **array, char c);
+void		check_all(int argc, char *argv[]);
+void		check_one_level(char *level);
 
-char	**map_load(char *path);
-void	map_check_rect(char **map);
-void	map_check_walls(char **map);
-void	map_check_minsize(char **map);
-void	map_check_layout(char **map);
+int			collision(char **map, player_t *player, char d);
+void		movement_hook(void *param);
+void		movement(player_t *player, char c);
 
-void	flood(char **map);
-char	**flood_algorithm(char **map, int x, int y);
-char	**flood_increase(char **map, int x, int y, char *str);
-void	flood_exit(char **map);
+mlx_image_t	*choose_number_image(player_t *player, int n);
+void		step_counter(void *param);
+void		setup_numbers(player_t *player);
 
-void	ft_error_free(char c, char **map);
-void	ft_error(char c);
+player_t	*create_player(mlx_t *mlx, char **map);
 
-void	map_check_name(char *name);
-void	check_arg_count(int argc);
-void	map_check(char *argv);
+void		setup_floor(mlx_t *mlx, char **map);
+char		*choose_texture(char c);
+
+void		pickup(void *param);
+void		hide_coin(mlx_t *mlx, int x, int y);
+
+void		gameloop(char *level);
+void		won_game(void *param);
+
+void		enemy_add_back(enemy_t **head, enemy_t *new);
+enemy_t		*last_enemy(enemy_t *enemy);
+enemy_t		*new_enemy(int x, int y, player_t *player, int move);
+void		spike_hook(void *param);
+
 
 #endif
