@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:47:08 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/16 20:19:35 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/17 14:52:54 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,5 @@ typedef struct player
 	num_t			*num;
 	enemy_t			*enemy;
 }	player_t;
-
 
 #endif

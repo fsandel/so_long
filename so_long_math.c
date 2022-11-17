@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   settings.h                                         :+:      :+:    :+:   */
+/*   so_long_math.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 11:31:12 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/17 21:08:04 by fsandel          ###   ########.fr       */
+/*   Created: 2022/11/17 13:02:11 by fsandel           #+#    #+#             */
+/*   Updated: 2022/11/17 14:44:53 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SETTINGS_H
-# define SETTINGS_H
+#include "so_long.h"
 
-# define SPEED 3
-# define BONUS 0
-# define ESPEED 1
-# define RANGE 64
-# define DIFF 0
-#endif
+long	square(long nb)
+{
+	return (nb * nb);
+}
+
+long	dis(long x1, long y1, long x2, long y2)
+{
+	long	output;
+	long	x;
+	long	y;
+	long	temp;
+
+	x = x1 - x2;
+	y = y1 - y2;
+	temp = square(x) + square(y);
+	output = sqrt(temp);
+	return (output);
+}

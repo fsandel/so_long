@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 20:19:43 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/16 18:44:16 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/17 22:09:58 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,64 +14,37 @@
 
 void	flood(char **map)
 {
-	int	p_x;
-	int	p_y;
 	int	*p;
 
+	flood_prep_map(map);
 	p = ft_find_char_in_array(map, 'P');
-	p_x = p[0];
-	p_y = p[1];
+	flood_algorithm(map, p[1], p[0], "HVEC0P");
 	free(p);
-	map = flood_algorithm(map, p_x, p_y);
 	flood_exit(map);
 }
 
-char	**flood_algorithm(char **map, int x, int y)
+void	flood_algorithm(char **map, int x, int y, char *str)
 {
-	flood_increase(map, x, y, "CE");
-	if (map[x][y - 1] == '0')
-	{
-		map[x][y - 1] = '1';
-		flood_algorithm(map, x, y - 1);
-	}
-	if (map[x][y + 1] == '0')
-	{
-		map[x][y + 1] = '1';
-		flood_algorithm(map, x, y + 1);
-	}
-	if (map[x - 1][y] == '0')
-	{
-		map[x - 1][y] = '1';
-		flood_algorithm(map, x - 1, y);
-	}
-	if (map[x + 1][y] == '0')
+	if (ft_strchr(str, map[x + 1][y]))
 	{
 		map[x + 1][y] = '1';
-		flood_algorithm(map, x + 1, y);
+		flood_algorithm(map, x + 1, y, str);
 	}
-	return (map);
-}
-
-char	**flood_increase(char **map, int x, int y, char *str)
-{
-	int	i;
-	int	len;
-
-	i = 0;
-	len = ft_strlen(str);
-	while (i < len)
+	if (ft_strchr(str, map[x - 1][y]))
 	{
-		if (map[x + 1][y] == str[i])
-			map[x + 1][y]++;
-		if (map[x - 1][y] == str[i])
-			map[x - 1][y]++;
-		if (map[x][y + 1] == str[i])
-			map[x][y + 1]++;
-		if (map[x][y - 1] == str[i])
-			map[x][y - 1]++;
-		i++;
+		map[x - 1][y] = '1';
+		flood_algorithm(map, x - 1, y, str);
 	}
-	return (map);
+	if (ft_strchr(str, map[x][y + 1]))
+	{
+		map[x][y + 1] = '1';
+		flood_algorithm(map, x, y + 1, str);
+	}
+	if (ft_strchr(str, map[x][y - 1]))
+	{
+		map[x][y - 1] = '1';
+		flood_algorithm(map, x, y - 1, str);
+	}
 }
 
 void	flood_exit(char **map)
@@ -85,4 +58,23 @@ void	flood_exit(char **map)
 		return (ft_error_free('u', map));
 	if (collect > 0)
 		return (ft_error_free('U', map));
+}
+
+void	flood_prep_map(char **map)
+{
+	int	i;
+	int	j;
+
+	j = 0;
+	while (map[j])
+	{
+		i = 0;
+		while (map[j][i])
+		{
+			if (map[j][i] == 'S')
+				map[j][i] = '1';
+			i++;
+		}
+		j++;
+	}
 }

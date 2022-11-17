@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:37:01 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/16 20:55:09 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/17 17:20:24 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	spike_hook(void *param)
 
 	player = (player_t *)param;
 	if (player->field == 'S')
-		mlx_close_window(player->mlx);
+		game_lost(player);
 }
 
 void	enemy_add_back(enemy_t **head, enemy_t *new)
@@ -63,4 +63,59 @@ enemy_t	*new_enemy(int x, int y, player_t *player, int move)
 	else
 		enemy->tex = mlx_load_png(MISS);
 	return (enemy);
+}
+
+enemy_t	*setup_enemy(player_t *player)
+{
+	int		i;
+	int		j;
+	enemy_t	*enemy;
+
+	enemy = NULL;
+	j = 0;
+	while (player->map[j])
+	{
+		i = 0;
+		while (player->map[j][i])
+		{
+			if (player->map[j][i] == 'H')
+				enemy_add_back(&enemy,
+					new_enemy(i * SIZE, j * SIZE, player, 1));
+			if (player->map[j][i] == 'V')
+				enemy_add_back(&enemy,
+					new_enemy(i * SIZE, j * SIZE, player, 2));
+			i++;
+		}
+		j++;
+	}
+	enemy_on_map(player, enemy);
+	return (enemy);
+}
+
+long	distance(player_t *player, enemy_t *enemy)
+{
+	long	output;
+	long	ex;
+	long	ey;
+	long	px;
+	long	py;
+
+	ex = enemy->img->instances->x;
+	ey = enemy->img->instances->y;
+	px = player->img->instances->x;
+	py = player->img->instances->y;
+	output = dis(ex, ey, px, py);
+	return (output);
+}
+
+
+void	enemy_on_map(player_t *player, enemy_t *enemy)
+{
+	while (enemy)
+	{
+		mlx_image_to_window(player->mlx, enemy->img, enemy->x, enemy->y);
+		mlx_set_instance_depth(enemy->img->instances, 2);
+		mlx_draw_texture(enemy->img, enemy->tex, 0, 0);
+		enemy = enemy->next;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:06:48 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/16 20:04:17 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/17 21:25:30 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <math.h>
 
 # include "lib/MLX42/include/MLX42/MLX42.h"
 # include "libft/libft.h"
@@ -39,9 +40,10 @@ void		map_check_minsize(char **map);
 void		map_check_layout(char **map);
 
 void		flood(char **map);
-char		**flood_algorithm(char **map, int x, int y);
+void		flood_algorithm(char **map, int x, int y, char *str);
 char		**flood_increase(char **map, int x, int y, char *str);
 void		flood_exit(char **map);
+void		flood_prep_map(char **map);
 
 void		ft_error_free(char c, char **map);
 void		ft_error(char c);
@@ -77,6 +79,26 @@ void		enemy_add_back(enemy_t **head, enemy_t *new);
 enemy_t		*last_enemy(enemy_t *enemy);
 enemy_t		*new_enemy(int x, int y, player_t *player, int move);
 void		spike_hook(void *param);
+enemy_t		*setup_enemy(player_t *player);
+long		distance(player_t *player, enemy_t *enemy);
 
+
+long		square(long nb);
+long		dis(long x1, long y1, long x2, long y2);
+
+void		game_lost(player_t *player);
+void		won_game(void *param);
+
+void		enemy_on_map(player_t *player, enemy_t *enemy);
+void		move_enemy(void *param);
+void		enemy_collision(player_t *player, enemy_t *enemy);
+void		game_lost(player_t *player);
+
+int			up(mlx_t *mlx);
+int			down(mlx_t *mlx);
+int			left(mlx_t *mlx);
+int			right(mlx_t *mlx);
+
+void	map_check_badchar(char **map);
 
 #endif

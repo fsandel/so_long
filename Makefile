@@ -6,13 +6,13 @@
 #    By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 09:53:10 by fsandel           #+#    #+#              #
-#    Updated: 2022/11/16 19:44:18 by fsandel          ###   ########.fr        #
+#    Updated: 2022/11/17 17:20:52 by fsandel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC				= cc
 RM				= rm -f
-CFLAGS			= #-Wall -Wextra -Werror
+CFLAGS			= -Wall -Wextra -Werror
 NAME			= so_long.out
 OBJ_DIR			= ./obj/
 LIBFT_DIR		= ./libft/
@@ -29,7 +29,9 @@ SRC				=	so_long.c so_long_backgound.c so_long_check.c \
 					so_long_error.c so_long_flood.c so_long_loop.c \
 					so_long_map.c so_long_map_1.c so_long_move.c \
 					so_long_pickup.c so_long_player.c so_long_steps.c \
-					so_long_utils.c so_long_enemy.c
+					so_long_utils.c so_long_enemy.c so_long_math.c \
+					so_long_end.c so_long_directions.c \
+					so_long_enemy_movement.c
 
 HDR			=	settings.h so_long_structs.h so_long.h textures.h
 

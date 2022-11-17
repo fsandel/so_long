@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:46:06 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/16 18:43:56 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/17 21:50:15 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,4 +106,23 @@ void	map_check_layout(char **map)
 		return (ft_error_free('e', map));
 	if (collect < 0)
 		return (ft_error_free('c', map));
+}
+
+void	map_check_badchar(char **map)
+{
+	int	i;
+	int	j;
+
+	j = 0;
+	while (map[j])
+	{
+		i = 0;
+		while (map[j][i])
+		{
+			if (!ft_strchr("HVEC0P", map[j][i]))
+				ft_error_free('?', map);
+			i++;
+		}
+		j++;
+	}
 }

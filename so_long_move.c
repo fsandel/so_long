@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:12:34 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/16 18:46:51 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/17 17:09:00 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,22 @@ int	collision(char **map, player_t *player, char d)
 {
 	int	x;
 	int	y;
+	int	col;
 
+	col = SIZE * 1 / 3;
 	x = player->img->instances->x + SIZE / 2;
 	y = player->img->instances->y + SIZE / 2;
 	if (d == 'd')
-		if (map[y / SIZE][(x + SPEED) / SIZE] == '1')
+		if (map[y / SIZE][(x + SPEED + col) / SIZE] == '1')
 			return (1);
 	if (d == 'a')
-		if (map[y / SIZE][(x - SPEED) / SIZE] == '1')
+		if (map[y / SIZE][(x - SPEED - col) / SIZE] == '1')
 			return (1);
 	if (d == 'w')
-		if (map[(y - SPEED) / SIZE][x / SIZE] == '1')
+		if (map[(y - SPEED - col) / SIZE][x / SIZE] == '1')
 			return (1);
 	if (d == 's')
-		if (map[(y + SPEED) / SIZE][x / SIZE] == '1')
+		if (map[(y + SPEED + col) / SIZE][x / SIZE] == '1')
 			return (1);
 	return (0);
 }
@@ -37,21 +39,21 @@ int	collision(char **map, player_t *player, char d)
 void	movement_hook(void *param)
 {
 	player_t	*player;
+	mlx_t		*mlx;
+	char		**map;
 
 	player = (player_t *)param;
-	if (mlx_is_key_down(player->mlx, MLX_KEY_D)
-		&& !collision(player->map, player, 'd'))
+	mlx = player->mlx;
+	map = player->map;
+	if (right(mlx) && !left(mlx) && !collision(map, player, 'd'))
 		movement(player, 'd');
-	if (mlx_is_key_down(player->mlx, MLX_KEY_A)
-		&& !collision(player->map, player, 'a'))
+	if (left(mlx) && !right(mlx) && !collision(map, player, 'a'))
 		movement(player, 'a');
-	if (mlx_is_key_down(player->mlx, MLX_KEY_W)
-		&& !collision(player->map, player, 'w'))
+	if (up(mlx) && !down(mlx) && !collision(map, player, 'w'))
 		movement(player, 'w');
-	if (mlx_is_key_down(player->mlx, MLX_KEY_S)
-		&& !collision(player->map, player, 's'))
+	if (down(mlx) && !up(mlx) && !collision(map, player, 's'))
 		movement(player, 's');
-	if (mlx_is_key_down(player->mlx, MLX_KEY_ESCAPE))
+	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		return (ft_error('e'));
 }
 
