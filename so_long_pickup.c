@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:23:32 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/16 18:39:07 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/21 09:42:36 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	pickup(void *param)
 {
 	int			x;
 	int			y;
-	player_t	*player;
+	t_player	*player;
 
-	player = (player_t *)param;
+	player = (t_player *)param;
 	x = player->x;
 	y = player->y;
 	if (player->field == 'C')

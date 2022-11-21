@@ -6,13 +6,13 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:17:55 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/16 15:18:15 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/21 09:54:49 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-mlx_image_t	*choose_number_image(player_t *player, int n)
+mlx_image_t	*choose_number_image(t_player *player, int n)
 {
 	if (n == 1)
 		return (player->num->n1);
@@ -41,9 +41,9 @@ void	step_counter(void *param)
 	mlx_image_t	*img1;
 	mlx_image_t	*img2;
 	mlx_image_t	*img3;
-	player_t	*player;
+	t_player	*player;
 
-	player = (player_t *)param;
+	player = (t_player *)param;
 	if (player->dis_m >= 999)
 		return ;
 	img1 = choose_number_image(player, player->dis_m % 10);
@@ -55,11 +55,11 @@ void	step_counter(void *param)
 	return ;
 }
 
-void	setup_numbers(player_t *player)
+void	setup_numbers(t_player *player)
 {
-	num_t	*num;
+	t_num	*num;
 
-	num = malloc(sizeof(num_t));
+	num = malloc(sizeof(t_num));
 	num->n0 = mlx_texture_to_image(player->mlx, mlx_load_png(NUM0));
 	num->n1 = mlx_texture_to_image(player->mlx, mlx_load_png(NUM1));
 	num->n2 = mlx_texture_to_image(player->mlx, mlx_load_png(NUM2));

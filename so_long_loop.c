@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:24:47 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/17 14:51:02 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/21 09:40:26 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	gameloop(char *level)
 {
 	char			**map;
 	mlx_t			*mlx;
-	player_t		*player;
+	t_player		*player;
 
 	map = map_load(level);
 	mlx = mlx_init(ft_strlen(map[0]) * SIZE,

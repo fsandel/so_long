@@ -6,13 +6,13 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:12:34 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/17 17:09:00 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/21 09:40:41 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	collision(char **map, player_t *player, char d)
+int	collision(char **map, t_player *player, char d)
 {
 	int	x;
 	int	y;
@@ -38,11 +38,11 @@ int	collision(char **map, player_t *player, char d)
 
 void	movement_hook(void *param)
 {
-	player_t	*player;
+	t_player	*player;
 	mlx_t		*mlx;
 	char		**map;
 
-	player = (player_t *)param;
+	player = (t_player *)param;
 	mlx = player->mlx;
 	map = player->map;
 	if (right(mlx) && !left(mlx) && !collision(map, player, 'd'))
@@ -57,7 +57,7 @@ void	movement_hook(void *param)
 		return (ft_error('e'));
 }
 
-void	movement(player_t *player, char c)
+void	movement(t_player *player, char c)
 {
 	if (c == 'd')
 		player->img ->instances->x += SPEED;

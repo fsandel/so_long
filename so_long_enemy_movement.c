@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 17:20:25 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/17 22:10:34 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/21 09:48:32 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	move_enemy(void *param)
 {
-	player_t	*player;
-	enemy_t		*enemy;
+	t_player	*player;
+	t_enemy	*enemy;
 
-	player = (player_t *)param;
+	player = (t_player *)param;
 	enemy = player->enemy;
 	while (enemy)
 	{
@@ -32,7 +32,7 @@ void	move_enemy(void *param)
 	}
 }
 
-void	enemy_collision(player_t *player, enemy_t *enemy)
+void	enemy_collision(t_player *player, t_enemy *enemy)
 {
 	int		x;
 	int		y;

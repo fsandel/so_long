@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:46:59 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/17 14:47:40 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/21 09:39:40 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void	won_game(void *param)
 {
 	int			collectibles;
-	player_t	*player;
+	t_player	*player;
 	mlx_t		*mlx;
 
-	player = (player_t *)param;
+	player = (t_player *)param;
 	if (player->field == 'E')
 	{
 		collectibles = ft_array_count_chr(player->map, 'C');
@@ -31,7 +31,7 @@ void	won_game(void *param)
 	}
 }
 
-void	game_lost(player_t *player)
+void	game_lost(t_player *player)
 {
 	int	*spawn;
 
