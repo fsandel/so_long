@@ -6,70 +6,81 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:17:55 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/21 09:54:49 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/21 17:13:12 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-mlx_image_t	*choose_number_image(t_player *player, int n)
-{
-	if (n == 1)
-		return (player->num->n1);
-	if (n == 2)
-		return (player->num->n2);
-	if (n == 3)
-		return (player->num->n3);
-	if (n == 4)
-		return (player->num->n4);
-	if (n == 5)
-		return (player->num->n5);
-	if (n == 6)
-		return (player->num->n6);
-	if (n == 7)
-		return (player->num->n7);
-	if (n == 8)
-		return (player->num->n8);
-	if (n == 9)
-		return (player->num->n9);
-	else
-		return (player->num->n0);
-}
+char	*return_texture(int n);
 
 void	step_counter(void *param)
 {
-	mlx_image_t	*img1;
-	mlx_image_t	*img2;
-	mlx_image_t	*img3;
 	t_player	*player;
+	int			dis;
 
 	player = (t_player *)param;
 	if (player->dis_m >= 999)
 		return ;
-	img1 = choose_number_image(player, player->dis_m % 10);
-	img2 = choose_number_image(player, (player->dis_m / 10) % 10);
-	img3 = choose_number_image(player, (player->dis_m / 100) % 10);
-	mlx_image_to_window(player->mlx, img1, 3 * SIZE, 2);
-	mlx_image_to_window(player->mlx, img2, 2 * SIZE, 2);
-	mlx_image_to_window(player->mlx, img3, 1 * SIZE, 2);
+	dis = player->dis_m;
+	change_number_texture(player->numbers->n1, dis % 10);
+	if (player->dis_m % 10 == 0)
+		change_number_texture(player->numbers->n10, (dis / 10) % 10);
+	if (player->dis_m % 100 == 0)
+		change_number_texture(player->numbers->n100, (dis / 100) % 10);
 	return ;
 }
-
-void	setup_numbers(t_player *player)
+void	change_number_texture(t_number *number, int n)
 {
-	t_num	*num;
+	mlx_delete_texture(number->tex);
+	number->tex = mlx_load_png(return_texture(n));
+	mlx_draw_texture(number->img, number->tex, 0, 0);
+}
 
-	num = malloc(sizeof(t_num));
-	num->n0 = mlx_texture_to_image(player->mlx, mlx_load_png(NUM0));
-	num->n1 = mlx_texture_to_image(player->mlx, mlx_load_png(NUM1));
-	num->n2 = mlx_texture_to_image(player->mlx, mlx_load_png(NUM2));
-	num->n3 = mlx_texture_to_image(player->mlx, mlx_load_png(NUM3));
-	num->n4 = mlx_texture_to_image(player->mlx, mlx_load_png(NUM4));
-	num->n5 = mlx_texture_to_image(player->mlx, mlx_load_png(NUM5));
-	num->n6 = mlx_texture_to_image(player->mlx, mlx_load_png(NUM6));
-	num->n7 = mlx_texture_to_image(player->mlx, mlx_load_png(NUM7));
-	num->n8 = mlx_texture_to_image(player->mlx, mlx_load_png(NUM8));
-	num->n9 = mlx_texture_to_image(player->mlx, mlx_load_png(NUM9));
-	player->num = num;
-	return ;
+t_numbers	*setup_numbers(t_player *player)
+{
+	t_numbers	*numbers;
+
+	numbers = malloc(sizeof(t_numbers));
+	numbers->n100 = create_number(player, 1 * SIZE, 0);
+	numbers->n10 = create_number(player, 2 * SIZE, 0);
+	numbers->n1 = create_number(player, 3 * SIZE, 0);
+	return (numbers);
+}
+
+t_number	*create_number(t_player *player, int x, int y)
+{
+	t_number	*number;
+	
+	number = malloc(sizeof(t_number));
+	number->img = mlx_new_image(player->mlx, SIZE, SIZE);
+	number->tex = mlx_load_png(NUM0);
+	mlx_image_to_window(player->mlx, number->img, x, y);
+	mlx_set_instance_depth(number->img->instances, 4);
+	mlx_draw_texture(number->img, number->tex, 0, 0);
+	return (number);
+}
+
+char	*return_texture(int n)
+{
+	if (n == 1)
+		return (NUM1);
+	if (n == 2)
+		return (NUM2);
+	if (n == 3)
+		return (NUM3);
+	if (n == 4)
+		return (NUM4);
+	if (n == 5)
+		return (NUM5);
+	if (n == 6)
+		return (NUM6);
+	if (n == 7)
+		return (NUM7);
+	if (n == 8)
+		return (NUM8);
+	if (n == 9)
+		return (NUM9);
+	else
+		return (NUM0);
 }

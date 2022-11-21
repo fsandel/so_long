@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 09:30:03 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/21 10:40:06 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/21 17:45:55 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,17 @@ void	check_one_level(char *level)
 	map_check_badchar(map, "01PCEHVS");
 	map_check_walls(map);
 	map_check_layout(map);
+	map_check_size(map);
 	flood(map);
 	free(map);
 	ft_printf("%s is playable\n", level);
+}
+
+void	map_check_size(char **map)
+{
+	// if (ft_strlen(map[0]) > 74)
+	// 	ft_error('S');
+	printf("%d\n", ft_array_height(map));
+	if (ft_array_height(map) > 1080 / SIZE)
+		ft_error('S');
 }

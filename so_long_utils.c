@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 17:10:01 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/15 10:02:48 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/21 17:53:53 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,13 @@ int	*ft_find_char_in_array(char **array, char c)
 		j++;
 	}
 	return (NULL);
+}
+
+char	*ft_strtrim_free(char *str, char *del)
+{
+	char	*output;
+
+	output = ft_strtrim(str, del);
+	free(str);
+	return (output);
 }

@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:24:47 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/21 09:40:26 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/21 16:29:00 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	gameloop(char *level)
 	setup_floor(mlx, map);
 	player = create_player(mlx, map);
 	player->enemy = setup_enemy(player);
-	setup_numbers(player);
+	player->numbers = setup_numbers(player);
 	mlx_loop_hook(mlx, &movement_hook, player);
 	mlx_loop_hook(mlx, &move_enemy, player);
 	mlx_loop_hook(mlx, &pickup, player);

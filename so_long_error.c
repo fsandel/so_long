@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 17:30:54 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/21 10:32:11 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/21 17:43:29 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ void	ft_error(char c)
 		ft_error_exit("You hit the escape key");
 	if (c == 'X')
 		ft_error_exit("You closed the window");
+	if (c == 'l')
+		ft_error_exit("There is a empty line in the map");
+	if (c == 'S')
+		ft_error_exit("map is too big");
 	else
 		ft_error_exit("random exit");
 }
@@ -59,6 +63,7 @@ static void	ft_error_exit(char *str)
 {
 	write(2, "Error\n", 6);
 	write(2, str, ft_strlen(str));
+	write(2, "/n", 1);
 	exit(0);
 }
 

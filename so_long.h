@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:06:48 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/21 11:41:44 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/21 17:53:25 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void		map_check_badchar(char **map, char *str);
 
 void		check_all(int argc, char *argv[]);
 void		check_one_level(char *level);
+void		map_check_size(char **map);
 
 int			up(mlx_t *mlx);
 int			down(mlx_t *mlx);
@@ -43,6 +44,7 @@ int			right(mlx_t *mlx);
 
 void		won_game(void *param);
 void		game_lost(t_player *player);
+void		free_stuff(t_player *player);
 
 void		enemy_add_back(t_enemy **head, t_enemy *new);
 t_enemy		*last_enemy(t_enemy *enemy);
@@ -86,12 +88,15 @@ t_player	*create_player(mlx_t *mlx, char **map);
 
 mlx_image_t	*choose_number_image(t_player *player, int n);
 void		step_counter(void *param);
-void		setup_numbers(t_player *player);
+t_numbers	*setup_numbers(t_player *player);
+t_number	*create_number(t_player *player, int x, int y);
+void		change_number_texture(t_number *number, int n);
 
 char		*ft_strjoin_free(char *first, char *second);
 int			ft_array_height(char **array);
 int			ft_array_count_chr(char **array, char c);
 void		ft_putarray_fd(char **array, int fd);
 int			*ft_find_char_in_array(char **array, char c);
+char		*ft_strtrim_free(char *str, char *del);
 
 #endif

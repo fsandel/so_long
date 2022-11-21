@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:12:34 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/21 09:40:41 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/21 16:45:54 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ void	movement_hook(void *param)
 	if (down(mlx) && !up(mlx) && !collision(map, player, 's'))
 		movement(player, 's');
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
+	{
+		free_stuff(player);
 		return (ft_error('e'));
+	}
 }
 
 void	movement(t_player *player, char c)

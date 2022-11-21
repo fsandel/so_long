@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:46:06 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/21 11:41:33 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/21 17:53:35 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ char	**map_load(char *path)
 			break ;
 		long_map = ft_strjoin_free(long_map, temp);
 	}
+	long_map = ft_strtrim_free(long_map, "\n");
+	if (ft_strnstr(long_map, "\n\n", ft_strlen(long_map)))
+		ft_error('l');
 	map = ft_split(long_map, '\n');
 	return (free (long_map), map);
 }

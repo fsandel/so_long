@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:47:08 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/21 09:55:00 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/21 16:27:03 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,6 @@
 # define SO_LONG_STRUCTS_H
 
 # include "so_long.h"
-
-typedef struct num
-{
-	mlx_image_t	*n0;
-	mlx_image_t	*n1;
-	mlx_image_t	*n2;
-	mlx_image_t	*n3;
-	mlx_image_t	*n4;
-	mlx_image_t	*n5;
-	mlx_image_t	*n6;
-	mlx_image_t	*n7;
-	mlx_image_t	*n8;
-	mlx_image_t	*n9;
-}	t_num;
 
 /*
 *move 2 = vertikal
@@ -46,6 +32,19 @@ typedef struct enemy
 	int				turn;
 }	t_enemy;
 
+typedef struct number
+{
+	mlx_image_t		*img;
+	mlx_texture_t	*tex;
+}	t_number;
+
+typedef struct numbers
+{
+	t_number	*n1;
+	t_number	*n10;
+	t_number	*n100;
+}	t_numbers;
+
 typedef struct player
 {
 	mlx_t			*mlx;
@@ -58,8 +57,8 @@ typedef struct player
 	int				collect;
 	int				dis;
 	int				dis_m;
-	t_num			*num;
 	t_enemy			*enemy;
+	t_numbers		*numbers;
 }	t_player;
 
 #endif
