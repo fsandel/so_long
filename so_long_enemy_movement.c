@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 17:20:25 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/21 09:48:32 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/21 10:22:27 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	move_enemy(void *param)
 {
 	t_player	*player;
-	t_enemy	*enemy;
+	t_enemy		*enemy;
 
 	player = (t_player *)param;
 	enemy = player->enemy;
@@ -45,6 +45,6 @@ void	enemy_collision(t_player *player, t_enemy *enemy)
 			enemy->turn *= (-1);
 	if (enemy->move == 2)
 		if (player->map[(y + ESPEED * enemy->turn + SIZE
-				* (2 + enemy->turn) / 4) / SIZE][x / SIZE] == '1')
+					* (2 + enemy->turn) / 4) / SIZE][x / SIZE] == '1')
 			enemy->turn *= (-1);
 }

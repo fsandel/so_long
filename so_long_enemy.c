@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:37:01 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/21 09:48:24 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/21 10:21:56 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,6 @@ void	spike_hook(void *param)
 	player = (t_player *)param;
 	if (player->field == 'S')
 		game_lost(player);
-}
-
-void	enemy_add_back(t_enemy **head, t_enemy *new)
-{
-	if (!new)
-		return ;
-	if (!*head)
-	{
-		*head = new;
-		return ;
-	}
-	last_enemy(*head)->next = new;
-}
-
-t_enemy	*last_enemy(t_enemy *enemy)
-{
-	if (!enemy)
-		return (NULL);
-	while (enemy->next)
-		enemy = enemy->next;
-	return (enemy);
 }
 
 t_enemy	*new_enemy(int x, int y, t_player *player, int move)
@@ -107,7 +86,6 @@ long	distance(t_player *player, t_enemy *enemy)
 	output = dis(ex, ey, px, py);
 	return (output);
 }
-
 
 void	enemy_on_map(t_player *player, t_enemy *enemy)
 {

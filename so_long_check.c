@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 09:30:03 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/17 22:12:55 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/21 10:40:06 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	check_one_level(char *level)
 
 	map = map_load(level);
 	map_check_rect(map);
-	//map_check_badchar(map);
+	map_check_badchar(map, "01PCEHVS");
 	map_check_walls(map);
 	map_check_layout(map);
 	flood(map);

@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:47:08 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/17 14:52:54 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/21 09:55:00 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct num
 	mlx_image_t	*n7;
 	mlx_image_t	*n8;
 	mlx_image_t	*n9;
-}	num_t;
+}	t_num;
 
 /*
 *move 2 = vertikal
@@ -44,7 +44,7 @@ typedef struct enemy
 	int				dis;
 	int				move;
 	int				turn;
-}	enemy_t;
+}	t_enemy;
 
 typedef struct player
 {
@@ -58,8 +58,8 @@ typedef struct player
 	int				collect;
 	int				dis;
 	int				dis_m;
-	num_t			*num;
-	enemy_t			*enemy;
-}	player_t;
+	t_num			*num;
+	t_enemy			*enemy;
+}	t_player;
 
 #endif

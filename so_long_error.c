@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 17:30:54 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/16 17:34:47 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/21 10:32:11 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	ft_error_free(char c, char **map)
 		ft_error_exit("unreachable exit");
 	else if (c == 'U')
 		ft_error_exit("unreachable collectible");
+	else if (c == 'b')
+		ft_error_exit("there is a bad char");
 	else
 		ft_error_exit("random exit");
 }

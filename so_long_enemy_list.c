@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   settings.h                                         :+:      :+:    :+:   */
+/*   so_long_enemy_list.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 11:31:12 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/21 11:38:45 by fsandel          ###   ########.fr       */
+/*   Created: 2022/11/21 10:16:55 by fsandel           #+#    #+#             */
+/*   Updated: 2022/11/21 10:22:01 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SETTINGS_H
-# define SETTINGS_H
+#include "so_long.h"
 
-# define SPEED 3
-# define BONUS 0
-# define ESPEED 1
-# define RANGE 64
-# define DIFF 0
+void	enemy_add_back(t_enemy **head, t_enemy *new)
+{
+	if (!new)
+		return ;
+	if (!*head)
+	{
+		*head = new;
+		return ;
+	}
+	last_enemy(*head)->next = new;
+}
 
-# define WIDTH 256
-# define HEIGHT 256
-
-#endif
+t_enemy	*last_enemy(t_enemy *enemy)
+{
+	if (!enemy)
+		return (NULL);
+	while (enemy->next)
+		enemy = enemy->next;
+	return (enemy);
+}
