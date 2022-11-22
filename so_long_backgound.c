@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:22:38 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/16 20:37:53 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/22 15:41:07 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ char	*choose_texture(char c)
 	else if (c == 'H')
 		return (FLOOR);
 	else if (c == 'V')
+		return (FLOOR);
+	else if (c == 's')
 		return (FLOOR);
 	else
 		return (MISS);

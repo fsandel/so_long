@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 17:10:01 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/21 17:53:53 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/22 15:18:46 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,6 @@ int	ft_array_count_chr(char **array, char c)
 				counter ++;
 	}
 	return (counter);
-}
-
-void	ft_putarray_fd(char **array, int fd)
-{
-	int	j;
-
-	j = 0;
-	while (array[j])
-	{
-		ft_putendl_fd(array[j], fd);
-		j++;
-	}
 }
 
 int	*ft_find_char_in_array(char **array, char c)

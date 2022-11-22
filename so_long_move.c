@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:12:34 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/21 16:45:54 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/22 17:15:38 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	movement_hook(void *param)
 	player = (t_player *)param;
 	mlx = player->mlx;
 	map = player->map;
+	player->dir = player_direction(player);
+	player_change_sprite(player);
 	if (right(mlx) && !left(mlx) && !collision(map, player, 'd'))
 		movement(player, 'd');
 	if (left(mlx) && !right(mlx) && !collision(map, player, 'a'))
@@ -76,4 +78,50 @@ void	movement(t_player *player, char c)
 	player->y = (player->img->instances->y + SIZE / 2) / SIZE;
 	player->field = player->map[player->y][player->x];
 	step_counter(player);
+}
+
+char	player_direction(t_player *player)
+{
+	mlx_t	*mlx;
+
+	mlx = player->mlx;
+	if (upright(mlx))
+		return ('e');
+	if (upleft(mlx))
+		return ('q');
+	if (downleft(mlx))
+		return ('z');
+	if (downright(mlx))
+		return ('c');
+	if (right(mlx) && !left(mlx))
+		return ('d');
+	if (left(mlx) && !right(mlx))
+		return ('a');
+	if (up(mlx) && !down(mlx))
+		return ('w');
+	if (down(mlx) && !up(mlx))
+		return ('s');
+	return (player->dir);
+}
+
+void	player_change_sprite(t_player *player)
+{
+	mlx_delete_texture(player->texture);
+	if (player->dir == 'w')
+			player->texture = mlx_load_png(UP);
+	if (player->dir == 'q')
+			player->texture = mlx_load_png(UPLEFT);
+	if (player->dir == 'a')
+			player->texture = mlx_load_png(LEFT);
+	if (player->dir == 'z')
+			player->texture = mlx_load_png(DOWNLEFT);
+	if (player->dir == 's')
+			player->texture = mlx_load_png(DOWN);
+	if (player->dir == 'c')
+			player->texture = mlx_load_png(DOWNRIGHT);
+	if (player->dir == 'd')
+			player->texture = mlx_load_png(RIGHT);
+	if (player->dir == 'e')
+			player->texture = mlx_load_png(UPRIGHT);
+	mlx_draw_texture(player->img, player->texture, 0, 0);
 }

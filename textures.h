@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 14:33:40 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/17 22:19:06 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/22 17:41:01 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 # define FLOOR "./sprites/floor.png"
 # define COIN "./sprites/coin2.png"
 # define WALL "./sprites/wall.png"
-# define EXIT "./sprites/door.png"
-# define SPAWN "./sprites/nest.png"
+# define EXIT "./sprites/portal_inactive.png"
+# define EXIT_ACTIVE "./sprites/portal_active.png"
+# define SPAWN "./sprites/bed.png"
 # define SPIKE "./sprites/spike.png"
 # define MISS "./sprites/miss.png"
 # define VERT "./sprites/vertikal.png"
@@ -35,5 +36,20 @@
 # define NUM8 "./sprites/8.png"
 # define NUM9 "./sprites/9.png"
 
+# define DOWN "./sprites/d.png"
+# define DOWNLEFT "./sprites/dl.png"
+# define LEFT "./sprites/l.png"
+# define UPLEFT "./sprites/ul.png"
+# define UP "./sprites/u.png"
+# define UPRIGHT "./sprites/ur.png"
+# define RIGHT "./sprites/r.png"
+# define DOWNRIGHT "./sprites/dr.png"
+
+# define EUP "./sprites/eu.png"
+# define ERIGHT "./sprites/er.png"
+# define EDOWN "./sprites/ed.png"
+# define ELEFT "./sprites/el.png"
+
+# define SLASH "./sprites/slash.png"
 # define SIZE 32
 #endif

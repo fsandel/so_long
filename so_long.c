@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:06:11 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/16 18:42:54 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/22 15:26:55 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,6 @@ int	main(int argc, char *argv[])
 
 	i = 1;
 	check_all(argc, argv);
-	if (BONUS == 0)
-		gameloop(argv[1]);
-	else
-	{
-		while (i < argc)
-		{
-			gameloop(argv[i]);
-			i++;
-		}
-	}
-	return (EXIT_SUCCESS);
+	gameloop(argv[1]);
+	return (0);
 }

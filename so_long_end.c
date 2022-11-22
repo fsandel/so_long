@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:46:59 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/21 17:12:26 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/22 18:42:11 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	game_lost(t_player *player)
 
 	if (DIFF == 1)
 	{
-		free_stuff(player);
 		mlx_close_window(player->mlx);
+		free_stuff(player);
 	}
 	else
 	{

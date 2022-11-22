@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:37:01 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/21 10:21:56 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/22 18:41:53 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ t_enemy	*new_enemy(int x, int y, t_player *player, int move)
 	enemy->move = move;
 	enemy->turn = 1;
 	if (move == 1)
-		enemy->tex = mlx_load_png(HORI);
+		enemy->tex = mlx_load_png(ERIGHT);
 	else if (move == 2)
-		enemy->tex = mlx_load_png(VERT);
+		enemy->tex = mlx_load_png(EDOWN);
 	else if (move == 0)
-		enemy->tex = mlx_load_png(SPIKE);
+		enemy->tex = mlx_load_png(EDOWN);
 	else
 		enemy->tex = mlx_load_png(MISS);
 	return (enemy);
@@ -48,9 +48,9 @@ t_enemy	*setup_enemy(t_player *player)
 {
 	int		i;
 	int		j;
-	t_enemy	*enemy;
+	t_enemy	*ene;
 
-	enemy = NULL;
+	ene = NULL;
 	j = 0;
 	while (player->map[j])
 	{
@@ -58,17 +58,17 @@ t_enemy	*setup_enemy(t_player *player)
 		while (player->map[j][i])
 		{
 			if (player->map[j][i] == 'H')
-				enemy_add_back(&enemy,
-					new_enemy(i * SIZE, j * SIZE, player, 1));
+				enemy_add_back(&ene, new_enemy(i * SIZE, j * SIZE, player, 1));
 			if (player->map[j][i] == 'V')
-				enemy_add_back(&enemy,
-					new_enemy(i * SIZE, j * SIZE, player, 2));
+				enemy_add_back(&ene, new_enemy(i * SIZE, j * SIZE, player, 2));
+			if (player->map[j][i] == 's')
+				enemy_add_back(&ene, new_enemy(i * SIZE, j * SIZE, player, 0));
 			i++;
 		}
 		j++;
 	}
-	enemy_on_map(player, enemy);
-	return (enemy);
+	enemy_on_map(player, eny);
+	return (ene);
 }
 
 long	distance(t_player *player, t_enemy *enemy)
@@ -92,7 +92,10 @@ void	enemy_on_map(t_player *player, t_enemy *enemy)
 	while (enemy)
 	{
 		mlx_image_to_window(player->mlx, enemy->img, enemy->x, enemy->y);
-		mlx_set_instance_depth(enemy->img->instances, 2);
+		if (enemy->move == 1)
+			mlx_set_instance_depth(enemy->img->instances, 3);
+		if (enemy->move == 2)
+			mlx_set_instance_depth(enemy->img->instances, 4);
 		mlx_draw_texture(enemy->img, enemy->tex, 0, 0);
 		enemy = enemy->next;
 	}

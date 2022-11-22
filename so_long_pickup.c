@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:23:32 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/21 09:42:36 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/22 16:20:45 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	pickup(void *param)
 		player->map[player->y][player->x] = '0';
 		player->img->instances->z++;
 		hide_coin(player->mlx, x, y);
+		player->coin = ft_array_count_chr(player->map, 'C');
+		portal(player);
 	}
 	return ;
 }

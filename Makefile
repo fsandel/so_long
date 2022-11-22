@@ -6,7 +6,7 @@
 #    By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 09:53:10 by fsandel           #+#    #+#              #
-#    Updated: 2022/11/21 16:56:00 by fsandel          ###   ########.fr        #
+#    Updated: 2022/11/22 17:18:43 by fsandel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ SRC				=	so_long.c so_long_backgound.c so_long_check.c \
 					so_long_utils.c so_long_enemy.c so_long_math.c \
 					so_long_end.c so_long_directions.c \
 					so_long_enemy_movement.c so_long_enemy_list.c \
-					so_long_check_map.c
+					so_long_check_map.c so_long_directions_diag.c \
+					so_long_sprite_animation.c so_long_coin_counter.c
 
 HDR			=	settings.h so_long_structs.h so_long.h textures.h
 

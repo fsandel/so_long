@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:06:48 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/21 17:53:25 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/22 18:40:48 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ int			down(mlx_t *mlx);
 int			left(mlx_t *mlx);
 int			right(mlx_t *mlx);
 
+int			upright(mlx_t *mlx);
+int			upleft(mlx_t *mlx);
+int			downleft(mlx_t *mlx);
+int			downright(mlx_t *mlx);
+
 void		won_game(void *param);
 void		game_lost(t_player *player);
 void		free_stuff(t_player *player);
@@ -51,6 +56,8 @@ t_enemy		*last_enemy(t_enemy *enemy);
 
 void		move_enemy(void *param);
 void		enemy_collision(t_player *player, t_enemy *enemy);
+void		enemy_change_sprite(t_enemy *enemy);
+char		*choose_enemy_tex(int move, int turn);
 
 void		spike_hook(void *param);
 t_enemy		*new_enemy(int x, int y, t_player *player, int move);
@@ -71,7 +78,8 @@ void		gameloop(char *level);
 
 void		map_check_name(char *name);
 void		check_arg_count(int argc);
-void		map_check(char *argv);
+char		*create_long_map(int fd);
+void		map_check_empty_line(char *long_map);
 char		**map_load(char *path);
 
 long		square(long nb);
@@ -80,6 +88,8 @@ long		dis(long x1, long y1, long x2, long y2);
 int			collision(char **map, t_player *player, char d);
 void		movement_hook(void *param);
 void		movement(t_player *player, char c);
+char		player_direction(t_player *player);
+void		player_change_sprite(t_player *player);
 
 void		pickup(void *param);
 void		hide_coin(mlx_t *mlx, int x, int y);
@@ -91,6 +101,7 @@ void		step_counter(void *param);
 t_numbers	*setup_numbers(t_player *player);
 t_number	*create_number(t_player *player, int x, int y);
 void		change_number_texture(t_number *number, int n);
+char		*return_texture(int n);
 
 char		*ft_strjoin_free(char *first, char *second);
 int			ft_array_height(char **array);
@@ -98,5 +109,9 @@ int			ft_array_count_chr(char **array, char c);
 void		ft_putarray_fd(char **array, int fd);
 int			*ft_find_char_in_array(char **array, char c);
 char		*ft_strtrim_free(char *str, char *del);
+
+void		portal(void *param);
+
+void		coin_counter(void *param);
 
 #endif

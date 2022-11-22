@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:24:47 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/21 16:29:00 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/22 17:27:06 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	gameloop(char *level)
 	mlx_loop_hook(mlx, &spike_hook, player);
 	mlx_close_hook(mlx, &ft_error_void, "X");
 	mlx_loop_hook(mlx, &won_game, player);
+	mlx_loop_hook(mlx, &coin_counter, player);
 	mlx_loop(mlx);
 	return ;
 }

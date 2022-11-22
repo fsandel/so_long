@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   settings.h                                         :+:      :+:    :+:   */
+/*   so_long_coin_counter.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 11:31:12 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/22 16:44:53 by fsandel          ###   ########.fr       */
+/*   Created: 2022/11/22 17:18:47 by fsandel           #+#    #+#             */
+/*   Updated: 2022/11/22 17:30:50 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SETTINGS_H
-# define SETTINGS_H
+#include "so_long.h"
 
-# define SPEED 3
-# define BONUS 0
-# define ESPEED 1
-# define RANGE 64
-# define DIFF 1
+void	coin_counter(void *param)
+{
+	t_player	*player;
+	int			coins;
 
-# define WIDTH 256
-# define HEIGHT 256
-
-#endif
+	player = (t_player *)param;
+	if (player->dis_m >= 999)
+		return ;
+	coins = player->max_coins - player->coin;
+	change_number_texture(player->numbers->c1, coins % 10);
+	return ;
+}

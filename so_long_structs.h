@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:47:08 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/21 16:27:03 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/22 17:33:15 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@ typedef struct numbers
 	t_number	*n1;
 	t_number	*n10;
 	t_number	*n100;
+	t_number	*c1;
+	t_number	*c10;
+	t_number	*c1_max;
+	t_number	*c10_max;
 }	t_numbers;
 
 typedef struct player
@@ -57,6 +61,10 @@ typedef struct player
 	int				collect;
 	int				dis;
 	int				dis_m;
+	char			dir;
+	int				coin;
+	int				coin_switch;
+	int				max_coins;
 	t_enemy			*enemy;
 	t_numbers		*numbers;
 }	t_player;
