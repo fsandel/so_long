@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 09:30:03 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/24 14:34:28 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/24 20:03:42 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	map_check_size(char **map)
 {
 	if (ft_strlen(map[0]) > 74)
 		ft_error('S');
-	printf("%d\n", ft_array_height(map));
 	if (ft_array_height(map) > 1080 / SIZE)
 		ft_error('S');
 }

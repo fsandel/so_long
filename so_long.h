@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:06:48 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/24 13:17:54 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/24 20:05:44 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ void		flood_exit(char **map);
 void		flood_prep_map(char **map);
 
 void		gameloop(char *level);
+void		add_loops(mlx_t *mlx, t_player *player);
+mlx_t		*create_window(char **map, char *level);
 
 void		map_check_name(char *name);
 void		check_arg_count(int argc);

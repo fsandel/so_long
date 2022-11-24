@@ -6,14 +6,13 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:24:47 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/24 18:46:44 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/24 20:05:39 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	add_loops(mlx_t *mlx, t_player *player);
-mlx_t	*create_window(char **map, char *level);
+
 
 void	gameloop(char *level)
 {
@@ -39,7 +38,7 @@ mlx_t	*create_window(char **map, char *level)
 	int32_t	height;
 
 	width = ft_strlen(map[0]) * SIZE;
-	height = ft_array_height(map) * SIZE; 
+	height = ft_array_height(map) * SIZE;
 	mlx = mlx_init(width, height, level, true);
 	mlx_set_window_limit(mlx, width, height, width, height);
 	return (mlx);
