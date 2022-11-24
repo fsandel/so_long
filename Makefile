@@ -6,7 +6,7 @@
 #    By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 09:53:10 by fsandel           #+#    #+#              #
-#    Updated: 2022/11/24 15:40:28 by fsandel          ###   ########.fr        #
+#    Updated: 2022/11/24 17:49:39 by fsandel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,6 +86,14 @@ else
 	make install_brew
 endif
 
+check_glfw:
+ifeq ($(shell brew info glfw | grep stable), ==> glfw: stable 3.3.8 (bottled), HEAD)
+	@echo "current GLFW found"
+else
+	@echo "no current GLFW found"
+	brew install glfw
+endif
+
 parrot:
 				curl parrot.live
 
@@ -94,7 +102,7 @@ install_brew:
 
 prepare:
 				make check_brew
-				brew install glfw
+				make check_glfw
 				make mlx
 				make libft
 
