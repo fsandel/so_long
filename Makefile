@@ -6,7 +6,7 @@
 #    By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 09:53:10 by fsandel           #+#    #+#              #
-#    Updated: 2022/11/24 15:38:24 by fsandel          ###   ########.fr        #
+#    Updated: 2022/11/24 15:40:28 by fsandel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,10 +70,10 @@ run:
 				@./$(NAME) map.ber
 
 libft:			
-				git clone https://github.com/fsandel/libft $(LIBFT_DIR); cd $(LIBFT_DIR); make
+				git clone https://github.com/fsandel/libft $(LIBFT_DIR); make -C $(LIBFT_DIR)
 
 mlx:
-				git clone https://github.com/codam-coding-college/MLX42 $(MLX_DIR); cd $(MLX_DIR); make
+				git clone https://github.com/codam-coding-college/MLX42 $(MLX_DIR); make -C $(MLX_DIR)
 
 make_mlx:		
 				brew install glfw
