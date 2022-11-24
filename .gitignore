@@ -1,0 +1,7 @@
+./libft
+./libft/*
+./MLX
+./MLX/*
+./obj
+./obj/*.o
+so_long
