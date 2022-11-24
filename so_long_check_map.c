@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 10:23:26 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/21 10:38:59 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/24 14:39:31 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ void	map_check_minsize(char **map)
 {
 	if (!map)
 		return (ft_error_free('s', map));
-	if (ft_array_height(map) < 3)
+	if (ft_array_height(map) <= 3)
 		return (ft_error_free('s', map));
-	if (ft_strlen(map[0]) < 3)
+	if (ft_strlen(map[0]) <= 3)
 		return (ft_error_free('s', map));
 }
 
@@ -76,7 +76,7 @@ void	map_check_layout(char **map)
 		return (ft_error_free('p', map));
 	if (exit != 1)
 		return (ft_error_free('e', map));
-	if (collect < 0)
+	if (collect < 1)
 		return (ft_error_free('c', map));
 }
 

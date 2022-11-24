@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:06:48 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/22 18:40:48 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/24 13:17:54 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <fcntl.h>
 # include <math.h>
 
-# include "lib/MLX42/include/MLX42/MLX42.h"
+# include "MLX/include/MLX42/MLX42.h"
 # include "libft/libft.h"
 # include "textures.h"
 # include "settings.h"
@@ -36,6 +36,7 @@ void		map_check_badchar(char **map, char *str);
 void		check_all(int argc, char *argv[]);
 void		check_one_level(char *level);
 void		map_check_size(char **map);
+void		map_check_max_numbers(char **map);
 
 int			up(mlx_t *mlx);
 int			down(mlx_t *mlx);

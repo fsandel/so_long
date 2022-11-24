@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 17:30:54 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/22 15:22:54 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/22 19:26:26 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ void	ft_error_free(char c, char **map)
 		ft_error_exit("unreachable collectible");
 	else if (c == 'b')
 		ft_error_exit("there is a bad char");
+	else if (c == 'C')
+		ft_error_exit("more than MAXCOINS coins");
+	else if (c == 'E')
+		ft_error_exit("more than MAXENEMIES enemies");
 	else
 		ft_error_exit("random exit");
 }

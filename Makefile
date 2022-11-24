@@ -6,24 +6,29 @@
 #    By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 09:53:10 by fsandel           #+#    #+#              #
-#    Updated: 2022/11/22 17:18:43 by fsandel          ###   ########.fr        #
+#    Updated: 2022/11/24 14:55:00 by fsandel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME			= so_long
 CC				= cc
 RM				= rm -f
 CFLAGS			= -Wall -Wextra -Werror
-NAME			= so_long
+MLXFLAGS		= -lglfw -L "/Users/fsandel/.brew/opt/glfw/lib/"
+
 OBJ_DIR			= ./obj/
-LIBFT_DIR		= ./libft/
-LIBFT			= $(LIBFT_DIR)libft.a
 OBJ_FILES		= $(SRC:.c=.o)
 OBJ				= $(addprefix $(OBJ_DIR), $(OBJ_FILES))
-MLX				= ./lib/MLX42/libmlx42.a
-MLXFLAGS		= -lglfw -L "/Users/fsandel/.brew/opt/glfw/lib/"
-HEADERS			=  -I ./include -I $(LIBMLX)/include
-LIBMLX			=./MLX42
 
+LIBFT_DIR		= libft
+LIBFT_LIB		= libft.a
+LIBFT			= $(LIBFT_DIR)/$(LIBFT_LIB)
+
+MLX_DIR			= MLX
+MLX_LIB			= libmlx42.a
+MLX				= $(MLX_DIR)/$(MLX_LIB)
+
+BREW			= rm -rf $HOME/.brew && git clone --depth=1 https://github.com/Homebrew/brew $HOME/.brew && echo 'export PATH=$HOME/.brew/bin:$PATH' >> $HOME/.zshrc && source $HOME/.zshrc && brew update
 
 SRC				=	so_long.c so_long_backgound.c so_long_check.c \
 					so_long_error.c so_long_flood.c so_long_loop.c \
@@ -35,29 +40,26 @@ SRC				=	so_long.c so_long_backgound.c so_long_check.c \
 					so_long_check_map.c so_long_directions_diag.c \
 					so_long_sprite_animation.c so_long_coin_counter.c
 
-HDR			=	settings.h so_long_structs.h so_long.h textures.h
-
 $(OBJ_DIR)%.o:	%.c
 				@mkdir -p $(OBJ_DIR)
 				@$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME):		$(OBJ)
-				@make lib
-				@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) -o $(NAME) $(MLXFLAGS) $(HEADERS)
+$(NAME):		prepare $(OBJ)
+				make -C $(LIBFT_DIR)
+				make -C $(MLX_DIR)
+				@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) -o $(NAME) $(MLXFLAGS)
 
 all:			$(NAME)
 
-lib:
-				@make -C libft
-
 clean:
-				make clean -C libft
 				$(RM) $(OBJ)
+				make clean -C $(LIBFT_DIR)
+				make clean -C $(MLX_DIR)
 
 fclean:			
-				make clean
-				make fclean -C libft
-				$(RM) $(NAME)
+				$(RM) $(OBJ) $(NAME)
+				make fclean -C $(LIBFT_DIR)
+				make fclean -C $(MLX_DIR)
 
 re:
 				make fclean
@@ -67,7 +69,33 @@ run:
 				@make all
 				@./$(NAME) map.ber
 
-norm:
-				norminette *.c *.h | grep "Error"
+libft:			
+				git clone https://github.com/fsandel/libft $(LIBFT_DIR); cd $(LIBFT_DIR); make
+
+mlx:
+				git clone https://github.com/codam-coding-college/MLX42 $(MLX_DIR); cd $(MLX_DIR); make
+
+make_mlx:		
+				brew install glfw
+
+check_brew:
+ifeq ($(shell which brew),$(HOME)/.brew/bin/brew)
+	@echo "Brew is installed"
+else
+	@echo "No Brew found"
+	make install_brew
+endif
+
+parrot:
+				curl parrot.live
+
+install_brew:
+				$(shell $(BREW))
+
+prepare:
+				make check_brew
+				brew install glfw
+				make mlx
+				make libft
 
 .PHONY:			all clean fclean re lib 

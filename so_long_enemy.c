@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:37:01 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/22 18:41:53 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/22 19:20:46 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_enemy	*setup_enemy(t_player *player)
 		}
 		j++;
 	}
-	enemy_on_map(player, eny);
+	enemy_on_map(player, ene);
 	return (ene);
 }
 
@@ -89,13 +89,13 @@ long	distance(t_player *player, t_enemy *enemy)
 
 void	enemy_on_map(t_player *player, t_enemy *enemy)
 {
+	int	depth;
+
+	depth = 3;
 	while (enemy)
 	{
 		mlx_image_to_window(player->mlx, enemy->img, enemy->x, enemy->y);
-		if (enemy->move == 1)
-			mlx_set_instance_depth(enemy->img->instances, 3);
-		if (enemy->move == 2)
-			mlx_set_instance_depth(enemy->img->instances, 4);
+		mlx_set_instance_depth(enemy->img->instances, depth++);
 		mlx_draw_texture(enemy->img, enemy->tex, 0, 0);
 		enemy = enemy->next;
 	}

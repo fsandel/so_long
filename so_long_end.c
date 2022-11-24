@@ -6,7 +6,7 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:46:59 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/22 18:42:11 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/22 19:06:41 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	won_game(void *param)
 			mlx = player->mlx;
 			free_stuff(player);
 			mlx_close_window(mlx);
+			ft_printf("You won the game\n");
+			exit(0);
 		}
 	}
 }
@@ -39,6 +41,8 @@ void	game_lost(t_player *player)
 	{
 		mlx_close_window(player->mlx);
 		free_stuff(player);
+		ft_printf("You lost the game\n");
+		exit(0);
 	}
 	else
 	{
@@ -46,6 +50,7 @@ void	game_lost(t_player *player)
 		player->img->instances->x = spawn[0] * SIZE;
 		player->img->instances->y = spawn[1] * SIZE;
 		free(spawn);
+		ft_printf("You got revived because I am so nice\n");
 	}
 }
 
