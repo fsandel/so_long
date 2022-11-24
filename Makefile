@@ -6,7 +6,7 @@
 #    By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 09:53:10 by fsandel           #+#    #+#              #
-#    Updated: 2022/11/24 18:54:15 by fsandel          ###   ########.fr        #
+#    Updated: 2022/11/24 19:33:19 by fsandel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,9 +75,6 @@ libft:
 mlx:
 				git clone https://github.com/codam-coding-college/MLX42 $(MLX_DIR); make -C $(MLX_DIR)
 
-make_mlx:		
-				brew install glfw
-
 check_brew:
 ifeq ($(shell which brew),$(HOME)/.brew/bin/brew)
 	@echo "Brew is installed"
@@ -86,8 +83,8 @@ else
 	make install_brew; source ~/.zshrc
 endif
 
-remove_brew:
-				rm -rf $(HOME)/.brew
+compile:
+				@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) -o $(NAME) $(MLXFLAGS)
 
 check_glfw:
 ifeq ($(shell brew info glfw | grep stable), ==> glfw: stable 3.3.8 (bottled), HEAD)
