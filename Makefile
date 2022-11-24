@@ -6,7 +6,7 @@
 #    By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 09:53:10 by fsandel           #+#    #+#              #
-#    Updated: 2022/11/24 14:55:00 by fsandel          ###   ########.fr        #
+#    Updated: 2022/11/24 15:38:24 by fsandel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME			= so_long
 CC				= cc
 RM				= rm -f
 CFLAGS			= -Wall -Wextra -Werror
-MLXFLAGS		= -lglfw -L "/Users/fsandel/.brew/opt/glfw/lib/"
+MLXFLAGS		= -lglfw -L "$(HOME)/.brew/opt/glfw/lib/"
 
 OBJ_DIR			= ./obj/
 OBJ_FILES		= $(SRC:.c=.o)
@@ -28,7 +28,7 @@ MLX_DIR			= MLX
 MLX_LIB			= libmlx42.a
 MLX				= $(MLX_DIR)/$(MLX_LIB)
 
-BREW			= rm -rf $HOME/.brew && git clone --depth=1 https://github.com/Homebrew/brew $HOME/.brew && echo 'export PATH=$HOME/.brew/bin:$PATH' >> $HOME/.zshrc && source $HOME/.zshrc && brew update
+BREW			= rm -rf $(HOME)/.brew && git clone --depth=1 https://github.com/Homebrew/brew $(HOME)/.brew && echo 'export PATH=$(HOME)/.brew/bin:$(PATH)' >> $(HOME)/.zshrc && source $(HOME)/.zshrc && brew update
 
 SRC				=	so_long.c so_long_backgound.c so_long_check.c \
 					so_long_error.c so_long_flood.c so_long_loop.c \
