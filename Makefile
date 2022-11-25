@@ -6,7 +6,7 @@
 #    By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 09:53:10 by fsandel           #+#    #+#              #
-#    Updated: 2022/11/24 19:33:19 by fsandel          ###   ########.fr        #
+#    Updated: 2022/11/25 09:52:00 by fsandel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,10 +44,9 @@ $(OBJ_DIR)%.o:	%.c
 				@mkdir -p $(OBJ_DIR)
 				@$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME):		prepare $(OBJ)
-				make -C $(LIBFT_DIR)
-				make -C $(MLX_DIR)
-				@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) -o $(NAME) $(MLXFLAGS)
+$(NAME):		mlx libft $(OBJ)
+				make check_brew
+				
 
 all:			$(NAME)
 
@@ -69,21 +68,29 @@ run:
 				@make all
 				@./$(NAME) map.ber
 
-libft:			
+libft:			$(LIBFT)
+
+$(LIBFT):
 				git clone https://github.com/fsandel/libft $(LIBFT_DIR); make -C $(LIBFT_DIR)
 
-mlx:
+mlx:			$(MLX)
+
+$(MLX):
 				git clone https://github.com/codam-coding-college/MLX42 $(MLX_DIR); make -C $(MLX_DIR)
 
 check_brew:
 ifeq ($(shell which brew),$(HOME)/.brew/bin/brew)
 	@echo "Brew is installed"
+	make compile
 else
-	@echo "No Brew found"
-	make install_brew; source ~/.zshrc
+	@echo "No current Brew found"
+	@echo "Pls install Brew by using make brew or skip by using make compile"
 endif
 
 compile:
+				make check_glfw
+				make libft
+				make mlx
 				@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) -o $(NAME) $(MLXFLAGS)
 
 check_glfw:
@@ -97,13 +104,7 @@ endif
 parrot:
 				curl parrot.live
 
-install_brew:
+brew:
 				$(shell $(BREW))
-
-prepare:
-				make check_brew
-				make check_glfw
-				make mlx
-				make libft
 
 .PHONY:			all clean fclean re lib 

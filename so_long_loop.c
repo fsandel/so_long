@@ -6,13 +6,11 @@
 /*   By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:24:47 by fsandel           #+#    #+#             */
-/*   Updated: 2022/11/24 20:05:39 by fsandel          ###   ########.fr       */
+/*   Updated: 2022/11/25 09:58:44 by fsandel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-
 
 void	gameloop(char *level)
 {
