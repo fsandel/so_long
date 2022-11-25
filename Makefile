@@ -6,7 +6,7 @@
 #    By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 09:53:10 by fsandel           #+#    #+#              #
-#    Updated: 2022/11/25 10:33:05 by fsandel          ###   ########.fr        #
+#    Updated: 2022/11/25 10:49:53 by fsandel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,10 +44,9 @@ $(OBJ_DIR)%.o:	%.c
 				@mkdir -p $(OBJ_DIR)
 				@$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME):		check_brew
+$(NAME):		
 				make check_brew
-				brew install glfw
-				
+
 
 all:			$(NAME)
 
@@ -82,6 +81,7 @@ $(MLX):
 check_brew:
 ifeq ($(shell which brew),$(HOME)/.brew/bin/brew)
 	@echo "Brew is installed"
+	make glfw
 	make compile
 else
 	@echo "No current Brew found"
@@ -92,6 +92,9 @@ compile:		mlx libft $(OBJ)
 				make libft
 				make mlx
 				@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) -o $(NAME) $(MLXFLAGS)
+
+glfw:
+				brew install glfw
 
 parrot:
 				curl parrot.live
