@@ -6,7 +6,7 @@
 #    By: fsandel <fsandel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 09:53:10 by fsandel           #+#    #+#              #
-#    Updated: 2022/11/25 09:52:00 by fsandel          ###   ########.fr        #
+#    Updated: 2022/11/25 10:05:51 by fsandel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,7 @@ else
 	@echo "Pls install Brew by using make brew or skip by using make compile"
 endif
 
-compile:
+compile:		mlx libft $(OBJ)
 				make check_glfw
 				make libft
 				make mlx
